@@ -2,15 +2,15 @@
 
 ## Overview
 
-GoScan is an interactive network scanner client, built in Go (Golang), featuring auto-completion and providing abstraction and automation over Nmap functionalities. Originally a small side-project for learning Go, it has evolved into a powerful tool for host discovery, port scanning, and service enumeration.
+Welcome to GoScan, an interactive network scanner client built in Go (Golang). Featuring auto-completion, this tool provides abstraction and automation over Nmap functionalities. What began as a small side-project for learning Go has transformed into a powerful solution for network professionals. GoScan excels in scenarios where time is limited, stealth is not a priority, or in professional engagements, such as Capture The Flag (CTFs), OSCP exams, and more.
 
 ## Key Features
 
-- **Auto-completion and Abstraction:** GoScan features auto-completion, providing abstraction and automation over Nmap functionalities.
-  
-- **SQLite Database:** Scans maintain their state in an SQLite database, allowing asynchronous results upload even in unstable environments.
+- **Auto-completion and Abstraction:** GoScan simplifies the user experience by providing auto-completion, abstracting the complexities of Nmap.
 
-- **Service Enumeration Integration:** The Service Enumeration phase integrates various tools like EyeWitness, Hydra, and nikto, tailored for specific services.
+- **SQLite Database:** In unstable environments with unreliable network connectivity, GoScan stands out. Scans are stored in an SQLite database, ensuring their state is maintained even if the connection is lost. This unique feature allows for asynchronous results upload, enabling data import at different stages without restarting the entire process.
+
+- **Service Enumeration Integration:** The Service Enumeration phase is enriched with a collection of tools like EyeWitness, Hydra, and nikto, each tailored to target specific services, enhancing the depth of network assessments.
 
 ## Installation
 
