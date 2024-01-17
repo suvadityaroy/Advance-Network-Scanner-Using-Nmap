@@ -1,36 +1,99 @@
-# Advance-Network-Scanner-Using-Nmap
+# GoScan: Advanced Network Scanner
 
-## Project Description:
+## Overview
 
-I spearheaded the development of an advanced network scanner that harnessed the capabilities of the Nmap scripting engine. This ambitious project leveraged Nmap's robust features and an extensive library of scripts to execute thorough network scans and assessments, contributing to enhanced network security and visibility. My responsibilities encompassed project management, script development, and comprehensive testing.
+GoScan is an interactive network scanner client, built in Go (Golang), featuring auto-completion and providing abstraction and automation over Nmap functionalities. Originally a small side-project for learning Go, it has evolved into a powerful tool for host discovery, port scanning, and service enumeration.
 
-## Key Achievements:
+## Key Features
 
-Comprehensive Network Assessment: Designed a network scanner capable of executing comprehensive network assessments. This included host discovery, port scanning, service enumeration, and vulnerability detection, ensuring a holistic view of the network's security posture.
+- **Auto-completion and Abstraction:** GoScan features auto-completion, providing abstraction and automation over Nmap functionalities.
+  
+- **SQLite Database:** Scans maintain their state in an SQLite database, allowing asynchronous results upload even in unstable environments.
 
-Nmap Scripting Integration: Successfully integrated the Nmap scripting engine, harnessing its powerful capabilities to create customized scripts for specific network analysis and vulnerability identification.
+- **Service Enumeration Integration:** The Service Enumeration phase integrates various tools like EyeWitness, Hydra, and nikto, tailored for specific services.
 
-Enhanced Security: The project played a pivotal role in bolstering network security by identifying vulnerabilities and potential threats, enabling timely mitigation measures to be put in place.
+## Installation
 
-Efficiency and Automation: Implemented automated scanning procedures, reducing manual effort and increasing the efficiency of network assessments, thus saving valuable time and resources.
+### Binary Installation (Recommended)
 
-Documentation and Reporting: Developed comprehensive documentation and reporting features, enabling the generation of detailed network assessment reports for stakeholders.
+```bash
+# Linux (64bit)
+$ wget https://github.com/marco-lancini/goscan/releases/download/v2.4/goscan_2.4_linux_amd64.zip
+$ unzip goscan_2.4_linux_amd64.zip
+$ chmod +x goscan
+$ sudo mv ./goscan /usr/local/bin/goscan
+```
 
-## Technologies Used:
+### Build from Source
 
-Nmap,
-Python (for script development),
-Networking protocols and standards,
-Automation and scripting tools
+```bash
+$ git clone https://github.com/marco-lancini/goscan.git
+$ cd goscan/
+$ docker-compose up --build
+$ docker-compose run cli /bin/bash
+$ make init
+$ make setup
+$ make build
+$ make cross
+```
 
-## Results:
+## Usage
 
-The advanced network scanner project significantly enhanced our organization's network security and efficiency. It provided a valuable tool for network administrators, empowering them to proactively identify vulnerabilities and maintain a robust security posture.
+GoScan supports various steps of network enumeration:
 
-This project showcased my expertise in network security, scripting, and project management, demonstrating my ability to tackle complex technical challenges and contribute to the overall success of the organization.
+### 1. Load Targets
 
-## Impact:
+```bash
+load target SINGLE <IP/32>
+load target MULTI <path-to-file>
+```
 
-The project led to a substantial improvement in network security, ensuring that our organization's digital assets and data remained protected from potential threats. It also streamlined network assessment processes, saving time and resources, ultimately contributing to our organization's success in maintaining a secure and efficient network infrastructure.
+### 2. Host Discovery
 
-This project highlights my skills in network security, scripting, project management, and my ability to make a significant impact on the organization's technical capabilities.
+```bash
+sweep <TYPE> <TARGET>
+load alive SINGLE <IP>
+load alive MULTI <path-to-file>
+```
+
+### 3. Port Scanning
+
+```bash
+portscan <TYPE> <TARGET>
+load portscan <path-to-file>
+```
+
+### 4. Service Enumeration
+
+```bash
+enumerate <TYPE> DRY <TARGET>
+enumerate <TYPE> <POLITE/AGGRESSIVE> <TARGET>
+```
+
+### 5. Special Scans
+
+```bash
+special eyewitness  # Take screenshots (KALI ONLY)
+special domain <users/hosts/servers>  # Extract Windows domain information
+special dns DISCOVERY <domain>  # Enumerate DNS
+special dns BRUTEFORCE <domain>  # Bruteforce DNS
+special dns BRUTEFORCE_REVERSE <domain> <base_IP>  # Reverse Bruteforce DNS
+```
+
+### 6. Utils
+
+```bash
+show <targets/hosts/ports>
+set config_file <PATH>  # Automatically configure settings
+set output_folder <PATH>  # Change the output folder
+set nmap_switches <SWEEP/TCP_FULL/TCP_STANDARD/...> <SWITCHES>  # Modify default Nmap switches
+set_wordlists <FINGER_USER/FTP_USER/...> <PATH>  # Modify default wordlists
+```
+
+## External Integrations
+
+Service Enumeration supports integrations with various tools for ARP, DNS, FINGER, FTP, HTTP, RDP, SMB, SMTP, SNMP, SSH, SQL, VNC.
+
+---
+
+*Combined with the "Advanced Network Scanner Using Nmap" project, GoScan significantly improves network security and efficiency. It offers a proactive approach to vulnerability identification, showcasing expertise in network security, scripting, and project management. The project's impact includes substantial improvements in network security, streamlined assessment processes, and overall contributions to the organization's success in maintaining a secure and efficient network infrastructure.*
