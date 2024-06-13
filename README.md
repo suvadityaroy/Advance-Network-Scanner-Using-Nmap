@@ -17,9 +17,11 @@ Welcome to GoScan, an interactive network scanner client built in Go (Golang). F
 ### Binary Installation (Recommended)
 
 ```bash
-# Linux (64bit)
+# Linux
 $ wget https://github.com/marco-lancini/goscan/releases/download/v2.4/goscan_2.4_linux_amd64.zip
 $ unzip goscan_2.4_linux_amd64.zip
+
+# Directory Path
 $ chmod +x goscan
 $ sudo mv ./goscan /usr/local/bin/goscan
 ```
